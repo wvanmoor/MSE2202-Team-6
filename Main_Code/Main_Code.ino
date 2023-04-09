@@ -40,7 +40,7 @@ const int Rack_Centre = 1;
 const int Rack_Side = 1;
 
 const int drive_speed = 1;
-const int reverse_distance = 10000;
+const int reverse_distance = 1;
 
 //Variables
 
@@ -139,7 +139,7 @@ void loop()
 
       if(timeup = true)
       {
-        drive_index = 2;
+        drive_index = 3;
         timeup = false;
         ping_jump = getSonar(TRIGGER_REAR, ECHO_REAR);        
         
@@ -149,19 +149,19 @@ void loop()
     }
     case 3: //Drive along rope
     {
-      //Bot.ToPosition("S1", Lift1_Lowered);
-      //Bot.ToPosition("S2", Lift2_Lowered);
-        digitalWrite(MOTOR_5A, HIGH);
-        digitalWrite(MOTOR_6A, HIGH);
-      /*if(timeup = true)
+      Bot.ToPosition("S1", Lift1_Lowered);
+      Bot.ToPosition("S2", Lift2_Lowered);
+      digitalWrite(MOTOR_5A, HIGH);
+      digitalWrite(MOTOR_6A, HIGH);
+      if(timeup = true)
       {
         timeup = false;
-        if(getSonar(TRIGGER_REAR, ECHO_REAR) - ping_jump <= -1*jump_size)
+        if(ping_jump - getSonar(TRIGGER_REAR, ECHO_REAR) >= jump_size)
         {
           drive_index = 4;
         }
         ping_jump = getSonar(TRIGGER_REAR, ECHO_REAR);
-      }*/
+      }
       break;
     }
     case 4: //Land on other table
